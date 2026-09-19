@@ -228,50 +228,48 @@
       opacity:1;transform:translateY(0) scale(1);pointer-events:auto
     }
 
-    /* V2-B6: البطاقة كـ “ورقة stationery” فعلية */
+    /* V2-B7: ورقة أكثر دفئًا وعمقًا، بدون إطار مزدوج */
     .invitation{
       position:relative;
       min-height:100svh;
       overflow:hidden;
       color:var(--ink);
       text-align:center;
-      /* ورقة ivory أضيق من الـhero، مع هوامش Bordeaux حولها */
       width:min(86vw, 620px);
       margin: 0 auto;
-      border-radius: 10px;
+      border-radius: 12px;
+      /* لون ورقة دافئ أقرب لورقة رسم طبيعية */
       background:
-        linear-gradient(145deg, #fbf6ec 0%, var(--paper) 55%, #f3e8d6 100%);
-      /* ظل واقعي متعدد الطبقات يوحي بورقة مرتفعة */
+        linear-gradient(150deg, #f9f2e6 0%, #fcf6eb 40%, #f4e8d6 100%);
+      /* ظل طبيعي هادئ يوحي بورقة مرتفعة */
       box-shadow:
-        0 30px 80px rgba(0,0,0,.45),
-        0 10px 30px rgba(0,0,0,.35),
-        inset 0 0 40px rgba(137,92,49,.10);
+        0 25px 70px rgba(0,0,0,.42),
+        0 8px 25px rgba(0,0,0,.32),
+        inset 0 0 35px rgba(137,92,49,.08);
       padding:clamp(56px,12vw,110px) clamp(28px,9vw,96px) clamp(70px,13vw,125px)
     }
 
-    /* إطار stationery مزدوج خافت */
+    /* إزالة الإطار المزدوج، والاحتفاظ فقط بـ texture ورقي دافئ */
     .invitation::before{
       content:"";
       position:absolute;
-      inset:14px;
-      border-radius:8px;
-      border:
-        1px solid rgba(120,90,70,.55),       /* outer warm hairline */
-        1px solid rgba(205,187,155,.75);     /* inner champagne line */
+      inset:0;
+      opacity:.20;
       pointer-events:none;
-      box-shadow:
-        inset 0 0 28px rgba(120,90,70,.18),
-        inset 0 0 10px rgba(120,90,70,.12);
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='.26'/%3E%3C/svg%3E");
+      mix-blend-mode:multiply
     }
 
-    /* texture ورقي شبه غير مرئي */
     .invitation::after{
       content:"";
       position:absolute;
       inset:0;
-      opacity:.22;
+      /* تدرج حواف دافئ خفيف جدًا ليعطي عمقًا للورقة */
+      background:
+        radial-gradient(120% 120% at 50% 50%,
+          rgba(120,90,70,0) 55%,
+          rgba(120,90,70,.06) 100%);
       pointer-events:none;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='.26'/%3E%3C/svg%3E");
       mix-blend-mode:multiply
     }
 
@@ -294,8 +292,8 @@
       width:min(78vw,490px);
       height:auto;
       transform:translateX(50%);
-      opacity:.035;
-      filter:sepia(.25);
+      opacity:.030;
+      filter:sepia(.22);
       pointer-events:none
     }
 
@@ -304,7 +302,6 @@
       z-index:2;
       max-width:530px;
       margin-inline:auto;
-      /* ink-depth خفيف جدًا */
       text-shadow: 0 1px 0 rgba(251,245,234,.7)
     }
 
@@ -360,7 +357,6 @@
       transform:translateY(12px)
     }
 
-    /* الأسماء كـ printed calligraphy */
     .names{
       margin:3.4rem 0 2.4rem;
       font-family:"Aref Ruqaa Ink",serif;
@@ -464,9 +460,9 @@
       .invitation{
         width:92vw;
         padding:52px 22px 70px;
-        border-radius:8px
+        border-radius:10px
       }
-      .invitation::before{inset:10px}
+      .invitation::before{inset:0}
       .invitation::after{inset:0}
 
       .botanical-corner{width:210px;left:-23%;bottom:-1%}
