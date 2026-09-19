@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed & Amina - Wedding Invitation</title>
+    <title>Pelecanus - Mohamed & Amina Wedding</title>
+    <meta name="description" content="Pelecanus? ISNT IT A SLOGAN FOR LOVE? - Wedding Invitation for Mohamed & Amina">
     <style>
         * {
             margin: 0;
@@ -56,7 +57,7 @@
         }
         
         .envelope-flap::after {
-            content: '💍';
+            content: '🦢';
             position: absolute;
             top: -120px;
             left: -20px;
@@ -117,6 +118,15 @@
             pointer-events: none;
         }
         
+        .pelecanus-header {
+            font-size: 18px;
+            color: #c4a4a4;
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
         .couple-names {
             font-size: 32px;
             color: #800020;
@@ -147,10 +157,11 @@
         }
         
         .slogan {
-            font-size: 12px;
+            font-size: 13px;
             color: #a52a2a;
             margin-top: 10px;
             font-weight: bold;
+            font-style: italic;
         }
         
         .rsvp {
@@ -198,6 +209,17 @@
             color: white;
             font-size: 28px;
             margin-bottom: 20px;
+        }
+        
+        .pelecanus-badge {
+            background: #c4a4a4;
+            color: #800020;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
         }
         
         .scratch-area {
@@ -255,6 +277,7 @@
             <div class="envelope-flap"></div>
             <div class="invitation-card">
                 <div class="lace-border"></div>
+                <div class="pelecanus-header">🦢 Pelecanus</div>
                 <div class="couple-names">Mohamed & Amina</div>
                 <div class="wedding-date">December 10, 2026 at 18:00</div>
                 <div class="venue">📍 Mesk El Lil</div>
@@ -269,7 +292,8 @@
     
     <div class="scratch-card" id="scratchCard">
         <button class="close-btn" onclick="closeScratch()">&times;</button>
-        <h2>💍 Save The Date! 💍</h2>
+        <div class="pelecanus-badge">🦢 Pelecanus</div>
+        <h2>Save The Date! 💍</h2>
         <p style="color: white; margin-bottom: 15px;">Scratch to reveal the special date:</p>
         <div class="scratch-area">
             <div class="scratch-reveal">December 10, 2026</div>
