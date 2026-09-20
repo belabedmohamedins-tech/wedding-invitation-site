@@ -60,14 +60,14 @@
     }
 
     .envelope-stage{
-      width:min(92vw,640px);
+      width:min(92vw,700px);
       position:relative;
       display:grid;place-items:center;
       padding-block:24px
     }
 
     .envelope{
-      width:min(88vw,540px);
+      width:min(70vw,600px);
       aspect-ratio:1.13/1;
       position:relative;
       transform-style:preserve-3d;
@@ -86,16 +86,14 @@
       z-index:1
     }
 
-    /* Burgundy silk ribbon as a decorative element above the envelope (not full cover) */
-    .ribbon{
+    /* Burgundy silk ribbon as an image element above the envelope */
+    .ribbon-img{
       position:absolute;
       top:15%;
       left:50%;
       transform:translateX(-50%);
-      width:60%;
+      width:50%;
       height:auto;
-      background:
-        url("assets/images/burgundy silk ribbon.png") center / contain no-repeat;
       pointer-events:none;
       z-index:2;
       opacity:.95
@@ -370,12 +368,12 @@
 
     @media(max-width:480px){
       .opening{padding:16px}
-      .envelope{width:min(91vw,460px)}
+      .envelope{width:min(75vw,460px)}
       .envelope-stage{padding-block:6px}
 
-      .ribbon{
+      .ribbon-img{
         top:18%;
-        width:70%
+        width:60%
       }
 
       .invitation-wrap{padding-inline:10px;padding-top:20px}
@@ -414,8 +412,8 @@
           <!-- Envelope as a single transparent PNG layer -->
           <div class="envelope-img" aria-hidden="true"></div>
 
-          <!-- Burgundy silk ribbon as a decorative element (not full cover) -->
-          <div class="ribbon" aria-hidden="true"></div>
+          <!-- Burgundy silk ribbon as an image element -->
+          <img class="ribbon-img" src="assets/images/burgundy silk ribbon.png" alt="" aria-hidden="true">
 
           <!-- Wax seal -->
           <button class="seal-button" id="openInvitation" type="button" aria-controls="invitation" aria-expanded="false" aria-label="اضغط على الختم لفتح الدعوة">
