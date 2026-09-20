@@ -33,28 +33,24 @@
       position:relative;
       isolation:isolate;
       overflow:hidden;
-      /* Atelier background as the main environment */
       background:
         url("assets/images/atelier-bg.webp") center / cover no-repeat;
     }
 
-    /* Global grain for the environment */
     .grain{
-      position:absolute;inset:0;z-index:-4;opacity:.15;pointer-events:none;
+      position:absolute;inset:0;z-index:-5;opacity:.15;pointer-events:none;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.7'/%3E%3C/svg%3E");
       mix-blend-mode:soft-light
     }
 
-    /* Warm ambient pool of light */
     .ambient{
-      position:absolute;inset:0;z-index:-3;pointer-events:none;
+      position:absolute;inset:0;z-index:-4;pointer-events:none;
       background:
         radial-gradient(ellipse at 50% 95%, rgba(189,125,78,.12), transparent 45%),
         radial-gradient(circle at 50% 18%, rgba(238,203,150,.06), transparent 28%);
       mix-blend-mode:screen
     }
 
-    /* Opening scene: editorial still life */
     .opening{
       position:absolute;inset:0;
       display:grid;place-items:center;
@@ -63,7 +59,6 @@
       transition:opacity 900ms ease,visibility 0s linear 1000ms
     }
 
-    /* Florals with depth: foreground / midground / background */
     .floral{
       position:absolute;
       width:clamp(260px,45vw,580px);
@@ -87,91 +82,48 @@
     }
 
     .envelope-stage{
-      width:min(92vw,620px);
+      width:min(92vw,640px);
       position:relative;
       display:grid;place-items:center;
       padding-block:24px
     }
 
     .envelope{
-      width:min(88vw,520px);
+      width:min(88vw,540px);
       aspect-ratio:1.13/1;
       position:relative;
       transform-style:preserve-3d;
       filter:drop-shadow(0 35px 50px rgba(0,0,0,.55));
     }
 
-    .envelope-body{
-      position:absolute;inset:0;
-      border:1px solid rgba(205,187,155,.2);
-      overflow:hidden;
+    /* Envelope as a single transparent PNG layer */
+    .envelope-img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
       background:
         url("assets/images/envelope.png") center / contain no-repeat;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        inset 0 -30px 60px rgba(0,0,0,.25);
+      pointer-events:none;
+      z-index:1
     }
 
-    .envelope-body::before{
-      content:"";position:absolute;inset:0;opacity:.14;
-      background-image:
-        repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 6px),
-        radial-gradient(circle at 35% 30%, rgba(246,223,182,.15), transparent 30%);
-      mix-blend-mode:soft-light
+    /* Burgundy silk ribbon as a layer above the envelope */
+    .ribbon{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      background:
+        url("assets/images/burgundy silk ribbon.png") center / contain no-repeat;
+      pointer-events:none;
+      z-index:2;
+      opacity:.95
     }
 
-    .envelope-body::after{
-      content:"";position:absolute;inset:10px;
-      border:1px solid rgba(205,187,155,.14);
-      pointer-events:none
-    }
-
-    .envelope-mark{
-      position:absolute;left:50%;top:52%;
-      width:50%;height:auto;
-      transform:translate(-50%,-50%);
-      opacity:.1;filter:sepia(.2) contrast(.95);pointer-events:none
-    }
-
-    .envelope-fold-left,.envelope-fold-right{
-      position:absolute;bottom:-1px;width:58%;height:63%;z-index:2;opacity:.66;pointer-events:none
-    }
-    .envelope-fold-left{
-      left:-4%;clip-path:polygon(0 0,100% 100%,0 100%);
-      background:linear-gradient(135deg, rgba(126,34,54,.85), rgba(44,3,12,.14) 75%);
-      border-bottom:1px solid rgba(205,187,155,.12)
-    }
-    .envelope-fold-right{
-      right:-4%;clip-path:polygon(100% 0,0 100%,100% 100%);
-      background:linear-gradient(225deg, rgba(126,34,54,.8), rgba(44,3,12,.15) 75%);
-      border-bottom:1px solid rgba(205,187,155,.12)
-    }
-
-    .flap{
-      position:absolute;top:0;left:0;width:100%;height:58%;z-index:5;
-      transform-origin:top center;transform-style:preserve-3d;
-      transition:transform 1100ms var(--ease) 180ms;
-      clip-path:polygon(0 0,100% 0,50% 100%);
-      background:linear-gradient(160deg, #6a1426 0%, #4b0918 55%, #2a040a 100%);
-      border-top:1px solid rgba(227,201,159,.26);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.09),
-        0 14px 24px rgba(0,0,0,.35);
-    }
-    .flap::before{
-      content:"";position:absolute;inset:0;opacity:.14;
-      background-image:repeating-linear-gradient(105deg, rgba(255,255,255,.04) 0 1px, transparent 1px 6px);
-      mix-blend-mode:soft-light
-    }
-    .flap::after{
-      content:"";position:absolute;inset:4%;
-      clip-path:polygon(0 0,100% 0,50% 94%);
-      border-bottom:1px solid rgba(205,187,155,.18);pointer-events:none
-    }
-
-    /* Wax seal as a physical object */
+    /* Wax seal as a physical object on top */
     .seal-button{
-      position:absolute;z-index:8;
+      position:absolute;z-index:3;
       left:50%;top:53.5%;
       width:clamp(96px,23vw,136px);aspect-ratio:1;
       transform:translate(-50%,-50%);
@@ -204,16 +156,6 @@
       display:block;width:100%;height:100%;object-fit:contain
     }
 
-    .seal-hint{
-      margin:1.15rem 0 0;
-      color:rgba(245,239,227,.7);
-      font-size:clamp(.63rem,1.8vw,.76rem);
-      letter-spacing:.06em;text-align:center;opacity:.85
-    }
-    .seal-hint::after{
-      content:"↟";display:block;margin-top:.25rem;color:var(--gold-soft);font-size:1rem
-    }
-
     .opening-kicker{
       margin:0 0 .8rem;
       color:var(--gold-soft);
@@ -223,10 +165,6 @@
     .scene.is-open .seal-button{
       pointer-events:none;
       animation:release 520ms var(--ease) forwards
-    }
-    .scene.is-open .flap{
-      transform:rotateX(-157deg);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 -6px 26px rgba(0,0,0,.3)
     }
     .scene.is-open .opening{
       opacity:0;visibility:hidden
@@ -238,7 +176,6 @@
       animation:driftBottom 900ms var(--ease) forwards
     }
 
-    /* Invitation as hero object in the same world */
     .invitation-wrap{
       position:relative;z-index:4;
       width:min(100%,780px);
@@ -306,7 +243,6 @@
       pointer-events:none
     }
 
-    /* Watermark very subtle */
     .paper-swan{
       position:absolute;
       top:3%;
@@ -317,6 +253,18 @@
       opacity:.028;
       filter:sepia(.22);
       pointer-events:none
+    }
+
+    /* Lace ornament as a subtle frame around the card */
+    .lace-frame{
+      position:absolute;
+      inset:6%;
+      background:
+        url("assets/images/lace ornament .png") center / contain no-repeat;
+      opacity:.08;
+      mix-blend-mode:multiply;
+      pointer-events:none;
+      z-index:0
     }
 
     .content{
@@ -362,6 +310,7 @@
       opacity:0;
       transform:translateY(10px)
     }
+
     .divider{
       display:block;
       width:min(270px,70vw);
@@ -379,7 +328,6 @@
       transform:translateY(12px)
     }
 
-    /* Names as printed calligraphy / visual climax */
     .names{
       margin:3.6rem 0 2.5rem;
       font-family:"Aref Ruqaa Ink",serif;
@@ -475,7 +423,7 @@
       .floral{width:270px;max-width:70%;opacity:.85}
       .floral.top{top:-3%;right:-14%}
       .floral.bottom{bottom:-6%;left:-14%}
-      .envelope{width:min(91vw,440px)}
+      .envelope{width:min(91vw,460px)}
       .envelope-stage{padding-block:6px}
 
       .invitation-wrap{padding-inline:10px;padding-top:20px}
@@ -487,6 +435,7 @@
       }
       .invitation::before{inset:0}
       .invitation::after{inset:0}
+      .lace-frame{inset:8%}
 
       .botanical-corner{width:210px;left:-24%;bottom:-1%}
       .paper-swan{width:98vw;top:6%}
@@ -513,24 +462,37 @@
       <div class="envelope-stage">
         <p class="opening-kicker">دعوة زفاف</p>
         <div class="envelope" aria-label="ظرف زفاف مختوم">
-          <div class="envelope-body"><img class="envelope-mark" src="assets/images/swan-emblem-primary.png" alt="" aria-hidden="true"></div>
-          <div class="envelope-fold-left" aria-hidden="true"></div><div class="envelope-fold-right" aria-hidden="true"></div>
-          <div class="flap" aria-hidden="true"></div>
-          <button class="seal-button" id="openInvitation" type="button" aria-controls="invitation" aria-expanded="false" aria-label="اضغط على الختم لفتح الدعوة"><img src="assets/images/wax-seal-ma.png" alt=""></button>
+          <!-- Envelope as a single transparent PNG layer -->
+          <div class="envelope-img" aria-hidden="true"></div>
+
+          <!-- Burgundy silk ribbon layer -->
+          <div class="ribbon" aria-hidden="true"></div>
+
+          <!-- Wax seal -->
+          <button class="seal-button" id="openInvitation" type="button" aria-controls="invitation" aria-expanded="false" aria-label="اضغط على الختم لفتح الدعوة">
+            <img src="assets/images/wax-seal-ma.png" alt="">
+          </button>
         </div>
-        <p class="seal-hint">اضغط على الختم لفتح الدعوة</p>
       </div>
     </section>
+
     <section class="invitation-wrap" id="invitation" aria-labelledby="card-title" aria-hidden="true">
       <article class="invitation">
+        <!-- Lace as a subtle frame around the card -->
+        <div class="lace-frame" aria-hidden="true"></div>
+
         <img class="paper-swan" src="assets/images/swan-emblem-primary.png" alt="" aria-hidden="true">
         <img class="botanical-corner" src="assets/images/floral element devorative.png" alt="" aria-hidden="true">
+
         <div class="content">
           <img class="card-emblem" src="assets/images/swan-emblem-primary.png" alt="شعار بجعتين مع مونوغرام م وأ">
           <p class="basmala">بسم الله الرحمن الرحيم</p>
           <p class="verse">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا<br>لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
           <p class="truth">صدق الله العظيم</p>
+
+          <!-- Using lace ornament also as a small centered divider -->
           <img class="divider" src="assets/images/lace ornament .png" alt="" aria-hidden="true">
+
           <p class="invitation-copy">يتشرف محمد وأمينة<br>بدعوتكم لمشاركتهما فرحة زفافهما<br>في ليلة نكتب فيها بداية فصل جديد من حكايتنا</p>
           <h1 class="names" id="card-title">محمد<span class="amp">&</span>أمينة</h1>
           <div class="event-rule" aria-hidden="true"></div>
@@ -553,3 +515,4 @@
     });
   </script>
 </body>
+</html>
