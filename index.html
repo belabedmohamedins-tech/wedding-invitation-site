@@ -59,8 +59,6 @@
       transition:opacity 900ms ease,visibility 0s linear 1000ms
     }
 
-    /* Removed random floral from opening scene */
-
     .envelope-stage{
       width:min(92vw,640px);
       position:relative;
@@ -173,7 +171,6 @@
       width:min(86vw, 640px);
       margin: 0 auto;
       border-radius: 12px;
-      /* Invitation card as pure paper background (no conflicting text) */
       background:
         url("assets/images/invitation card.png") center / contain no-repeat;
       box-shadow:
@@ -219,16 +216,6 @@
       pointer-events:none
     }
 
-    /* Lace ornament only as a small centered divider, not over envelope */
-    .divider{
-      display:block;
-      width:min(270px,70vw);
-      height:auto;
-      margin:1.65rem auto;
-      opacity:0;
-      transform:translateY(10px)
-    }
-
     .content{
       position:relative;
       z-index:2;
@@ -269,6 +256,16 @@
       margin:0;
       color:#86663f;
       font-size:clamp(.7rem,1.9vw,.82rem);
+      opacity:0;
+      transform:translateY(10px)
+    }
+
+    /* Lace ornament ONLY as a small centered divider inside the card */
+    .divider{
+      display:block;
+      width:min(200px,60vw);
+      height:auto;
+      margin:1.65rem auto;
       opacity:0;
       transform:translateY(10px)
     }
@@ -432,7 +429,7 @@
           <p class="verse">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا<br>لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
           <p class="truth">صدق الله العظيم</p>
 
-          <!-- Lace ornament only as a small centered divider -->
+          <!-- Lace ornament ONLY as a small centered divider -->
           <img class="divider" src="assets/images/lace ornament .png" alt="" aria-hidden="true">
 
           <p class="invitation-copy">يتشرف محمد وأمينة<br>بدعوتكم لمشاركتهما فرحة زفافهما<br>في ليلة نكتب فيها بداية فصل جديد من حكايتنا</p>
