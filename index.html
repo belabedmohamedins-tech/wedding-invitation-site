@@ -86,12 +86,14 @@
       z-index:1
     }
 
-    /* Burgundy silk ribbon as a layer above the envelope */
+    /* Burgundy silk ribbon as a decorative element above the envelope (not full cover) */
     .ribbon{
       position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
+      top:15%;
+      left:50%;
+      transform:translateX(-50%);
+      width:60%;
+      height:auto;
       background:
         url("assets/images/burgundy silk ribbon.png") center / contain no-repeat;
       pointer-events:none;
@@ -260,7 +262,6 @@
       transform:translateY(10px)
     }
 
-    /* Lace ornament ONLY as a small centered divider inside the card */
     .divider{
       display:block;
       width:min(200px,60vw);
@@ -372,6 +373,11 @@
       .envelope{width:min(91vw,460px)}
       .envelope-stage{padding-block:6px}
 
+      .ribbon{
+        top:18%;
+        width:70%
+      }
+
       .invitation-wrap{padding-inline:10px;padding-top:20px}
 
       .invitation{
@@ -408,7 +414,7 @@
           <!-- Envelope as a single transparent PNG layer -->
           <div class="envelope-img" aria-hidden="true"></div>
 
-          <!-- Burgundy silk ribbon layer -->
+          <!-- Burgundy silk ribbon as a decorative element (not full cover) -->
           <div class="ribbon" aria-hidden="true"></div>
 
           <!-- Wax seal -->
@@ -429,7 +435,6 @@
           <p class="verse">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا<br>لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
           <p class="truth">صدق الله العظيم</p>
 
-          <!-- Lace ornament ONLY as a small centered divider -->
           <img class="divider" src="assets/images/lace ornament.png" alt="" aria-hidden="true">
 
           <p class="invitation-copy">يتشرف محمد وأمينة<br>بدعوتكم لمشاركتهما فرحة زفافهما<br>في ليلة نكتب فيها بداية فصل جديد من حكايتنا</p>
