@@ -60,15 +60,16 @@
     }
 
     .envelope-stage{
-      width:min(95vw,850px);
+      width:min(100%,950px);
       position:relative;
       display:grid;place-items:center;
       padding-block:24px
     }
 
-    /* Much bigger envelope */
+    /* Envelope ~2x bigger */
     .envelope{
-      width:min(95vw,800px); /* أكبر بوضوح */
+      width:min(100%,900px); /* ضعف الحجم تقريبًا */
+      max-width:95vw;
       aspect-ratio:1.13/1;
       position:relative;
       transform-style:preserve-3d;
@@ -87,13 +88,13 @@
       z-index:1
     }
 
-    /* Smaller, better positioned ribbon */
+    /* Ribbon kept good, slightly smaller for big envelope */
     .ribbon-img{
       position:absolute;
-      top:12%; /* أقرب للحافة العلوية */
+      top:12%;
       left:50%;
       transform:translateX(-50%);
-      width:28%; /* أصغر نسبيًا */
+      width:24%; /* أصغر قليلاً ليناسب الظرف الكبير */
       height:auto;
       pointer-events:none;
       z-index:2;
@@ -239,13 +240,13 @@
 
     @media(max-width:480px){
       .opening{padding:16px}
-      .envelope{width:min(95vw,600px)}
+      .envelope{width:min(100%,700px);max-width:95vw}
       .envelope-stage{padding-block:6px}
 
-      /* Smaller ribbon on mobile, proportional */
+      /* Ribbon proportional on mobile */
       .ribbon-img{
         top:14%;
-        width:35%
+        width:30%
       }
 
       .invitation-wrap{padding-inline:10px;padding-top:20px}
@@ -282,7 +283,7 @@
           <!-- Envelope as a single transparent PNG layer -->
           <div class="envelope-img" aria-hidden="true"></div>
 
-          <!-- Burgundy silk ribbon - smaller and better positioned -->
+          <!-- Burgundy silk ribbon - smaller for big envelope -->
           <img class="ribbon-img" src="assets/images/burgundy silk ribbon.png" alt="" aria-hidden="true">
 
           <!-- Wax seal -->
