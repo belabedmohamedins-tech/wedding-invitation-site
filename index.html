@@ -59,27 +59,7 @@
       transition:opacity 900ms ease,visibility 0s linear 1000ms
     }
 
-    .floral{
-      position:absolute;
-      width:clamp(260px,45vw,580px);
-      max-width:65%;
-      height:auto;
-      pointer-events:none;
-      filter:drop-shadow(0 22px 32px rgba(0,0,0,.4));
-      z-index:-1
-    }
-    .floral.top{
-      top:-3%;
-      right:-6%;
-      transform:rotate(4deg);
-      opacity:.9
-    }
-    .floral.bottom{
-      bottom:-6%;
-      left:-8%;
-      transform:rotate(-3deg);
-      opacity:.85
-    }
+    /* Removed random floral from opening scene */
 
     .envelope-stage{
       width:min(92vw,640px);
@@ -169,12 +149,6 @@
     .scene.is-open .opening{
       opacity:0;visibility:hidden
     }
-    .scene.is-open .floral.top{
-      animation:driftTop 900ms var(--ease) forwards
-    }
-    .scene.is-open .floral.bottom{
-      animation:driftBottom 900ms var(--ease) forwards
-    }
 
     .invitation-wrap{
       position:relative;z-index:4;
@@ -199,6 +173,7 @@
       width:min(86vw, 640px);
       margin: 0 auto;
       border-radius: 12px;
+      /* Invitation card as pure paper background (no conflicting text) */
       background:
         url("assets/images/invitation card.png") center / contain no-repeat;
       box-shadow:
@@ -232,17 +207,6 @@
       mix-blend-mode:multiply
     }
 
-    .botanical-corner{
-      position:absolute;
-      bottom:-2%;
-      left:-7%;
-      width:clamp(180px,36vw,360px);
-      height:auto;
-      opacity:.42;
-      mix-blend-mode:multiply;
-      pointer-events:none
-    }
-
     .paper-swan{
       position:absolute;
       top:3%;
@@ -255,16 +219,14 @@
       pointer-events:none
     }
 
-    /* Lace ornament as a subtle frame around the card */
-    .lace-frame{
-      position:absolute;
-      inset:6%;
-      background:
-        url("assets/images/lace ornament .png") center / contain no-repeat;
-      opacity:.08;
-      mix-blend-mode:multiply;
-      pointer-events:none;
-      z-index:0
+    /* Lace ornament only as a small centered divider, not over envelope */
+    .divider{
+      display:block;
+      width:min(270px,70vw);
+      height:auto;
+      margin:1.65rem auto;
+      opacity:0;
+      transform:translateY(10px)
     }
 
     .content{
@@ -311,14 +273,6 @@
       transform:translateY(10px)
     }
 
-    .divider{
-      display:block;
-      width:min(270px,70vw);
-      height:auto;
-      margin:1.65rem auto;
-      opacity:0;
-      transform:translateY(10px)
-    }
     .invitation-copy{
       margin:0 auto;
       color:#583b33;
@@ -415,14 +369,9 @@
     }
     @keyframes rise{to{opacity:1;transform:translateY(0) scale(1)}}
     @keyframes appear{to{opacity:1}}
-    @keyframes driftTop{to{opacity:0;transform:translate(10%,-10%) rotate(8deg)}}
-    @keyframes driftBottom{to{opacity:0;transform:translate(-10%,10%) rotate(-8deg)}}
 
     @media(max-width:480px){
       .opening{padding:16px}
-      .floral{width:270px;max-width:70%;opacity:.85}
-      .floral.top{top:-3%;right:-14%}
-      .floral.bottom{bottom:-6%;left:-14%}
       .envelope{width:min(91vw,460px)}
       .envelope-stage{padding-block:6px}
 
@@ -435,9 +384,7 @@
       }
       .invitation::before{inset:0}
       .invitation::after{inset:0}
-      .lace-frame{inset:8%}
 
-      .botanical-corner{width:210px;left:-24%;bottom:-1%}
       .paper-swan{width:98vw;top:6%}
       .verse{line-height:1.95}
       .names{margin-top:2.5rem}
@@ -456,9 +403,8 @@
 <body>
   <main class="scene" id="scene">
     <div class="grain" aria-hidden="true"></div><div class="ambient" aria-hidden="true"></div>
+
     <section class="opening" aria-label="ظرف دعوة الزفاف">
-      <img class="floral top" src="assets/images/floral element devorative.png" alt="" aria-hidden="true">
-      <img class="floral bottom" src="assets/images/floral element devorative.png" alt="" aria-hidden="true">
       <div class="envelope-stage">
         <p class="opening-kicker">دعوة زفاف</p>
         <div class="envelope" aria-label="ظرف زفاف مختوم">
@@ -478,11 +424,7 @@
 
     <section class="invitation-wrap" id="invitation" aria-labelledby="card-title" aria-hidden="true">
       <article class="invitation">
-        <!-- Lace as a subtle frame around the card -->
-        <div class="lace-frame" aria-hidden="true"></div>
-
         <img class="paper-swan" src="assets/images/swan-emblem-primary.png" alt="" aria-hidden="true">
-        <img class="botanical-corner" src="assets/images/floral element devorative.png" alt="" aria-hidden="true">
 
         <div class="content">
           <img class="card-emblem" src="assets/images/swan-emblem-primary.png" alt="شعار بجعتين مع مونوغرام م وأ">
@@ -490,7 +432,7 @@
           <p class="verse">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا<br>لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
           <p class="truth">صدق الله العظيم</p>
 
-          <!-- Using lace ornament also as a small centered divider -->
+          <!-- Lace ornament only as a small centered divider -->
           <img class="divider" src="assets/images/lace ornament .png" alt="" aria-hidden="true">
 
           <p class="invitation-copy">يتشرف محمد وأمينة<br>بدعوتكم لمشاركتهما فرحة زفافهما<br>في ليلة نكتب فيها بداية فصل جديد من حكايتنا</p>
