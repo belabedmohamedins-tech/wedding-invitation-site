@@ -60,15 +60,15 @@
     }
 
     .envelope-stage{
-      width:min(95vw,800px);
+      width:min(95vw,850px);
       position:relative;
       display:grid;place-items:center;
       padding-block:24px
     }
 
-    /* Bigger envelope */
+    /* Much bigger envelope */
     .envelope{
-      width:min(90vw,720px); /* أكبر */
+      width:min(95vw,800px); /* أكبر بوضوح */
       aspect-ratio:1.13/1;
       position:relative;
       transform-style:preserve-3d;
@@ -87,13 +87,13 @@
       z-index:1
     }
 
-    /* Burgundy silk ribbon as an image element - smaller */
+    /* Smaller, better positioned ribbon */
     .ribbon-img{
       position:absolute;
-      top:15%;
+      top:12%; /* أقرب للحافة العلوية */
       left:50%;
       transform:translateX(-50%);
-      width:35%;
+      width:28%; /* أصغر نسبيًا */
       height:auto;
       pointer-events:none;
       z-index:2;
@@ -239,12 +239,13 @@
 
     @media(max-width:480px){
       .opening{padding:16px}
-      .envelope{width:min(95vw,560px)}
+      .envelope{width:min(95vw,600px)}
       .envelope-stage{padding-block:6px}
 
+      /* Smaller ribbon on mobile, proportional */
       .ribbon-img{
-        top:18%;
-        width:45%
+        top:14%;
+        width:35%
       }
 
       .invitation-wrap{padding-inline:10px;padding-top:20px}
@@ -281,7 +282,7 @@
           <!-- Envelope as a single transparent PNG layer -->
           <div class="envelope-img" aria-hidden="true"></div>
 
-          <!-- Burgundy silk ribbon as an image element - smaller -->
+          <!-- Burgundy silk ribbon - smaller and better positioned -->
           <img class="ribbon-img" src="assets/images/burgundy silk ribbon.png" alt="" aria-hidden="true">
 
           <!-- Wax seal -->
