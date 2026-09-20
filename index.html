@@ -60,14 +60,15 @@
     }
 
     .envelope-stage{
-      width:min(92vw,750px);
+      width:min(95vw,800px);
       position:relative;
       display:grid;place-items:center;
       padding-block:24px
     }
 
+    /* Bigger envelope */
     .envelope{
-      width:min(80vw,650px);
+      width:min(90vw,720px); /* أكبر */
       aspect-ratio:1.13/1;
       position:relative;
       transform-style:preserve-3d;
@@ -162,14 +163,14 @@
       opacity:1;transform:translateY(0) scale(1);pointer-events:auto
     }
 
-    /* Invitation card: text now inside the image, so we keep only the card container */
+    /* Invitation card */
     .invitation{
       position:relative;
       min-height:130svh;
       overflow:hidden;
       color:var(--ink);
       text-align:center;
-      width:min(86vw, 680px);
+      width:min(90vw, 720px);
       margin: 0 auto;
       border-radius: 12px;
       background:
@@ -217,7 +218,6 @@
       pointer-events:none
     }
 
-    /* We keep only decorative emblem if you still want it on top of the card image */
     .card-emblem{
       display:block;
       width:clamp(130px,30vw,200px);
@@ -239,7 +239,7 @@
 
     @media(max-width:480px){
       .opening{padding:16px}
-      .envelope{width:min(85vw,500px)}
+      .envelope{width:min(95vw,560px)}
       .envelope-stage{padding-block:6px}
 
       .ribbon-img{
@@ -250,7 +250,7 @@
       .invitation-wrap{padding-inline:10px;padding-top:20px}
 
       .invitation{
-        width:92vw;
+        width:95vw;
         padding:60px 20px 80px;
         border-radius:10px;
         min-height:140svh
@@ -296,10 +296,8 @@
       <article class="invitation">
         <img class="paper-swan" src="assets/images/swan-emblem-primary.png" alt="" aria-hidden="true">
 
-        <!-- Optional: keep emblem on top if you like it over the card image -->
+        <!-- Optional emblem on top of the card image -->
         <img class="card-emblem" src="assets/images/swan-emblem-primary.png" alt="شعار بجعتين مع مونوغرام م وأ" id="card-title">
-
-        <!-- All text is now inside the invitation card image, so no repeated text here -->
       </article>
     </section>
   </main>
